@@ -66,7 +66,7 @@ defmodule BinaryTreeTest do
       t1 = BT.new()
       t2 = BT.new()
 
-      assert true == BT.Isomorphism.isomorphic?(t1, t2)
+      assert true == BT.isomorphic?(t1, t2)
     end
 
     @tag task: :tree_isomorphism
@@ -74,7 +74,7 @@ defmodule BinaryTreeTest do
       t1 = BT.new() |> BT.insert(:key, 2)
       t2 = BT.new() |> BT.insert(:key, 3)
 
-      assert true == BT.Isomorphism.isomorphic?(t1, t2)
+      assert true == BT.isomorphic?(t1, t2)
     end
 
     @tag task: :tree_isomorphism
@@ -82,7 +82,7 @@ defmodule BinaryTreeTest do
       t1 = Enum.reduce([5, 1, 10, 9, 15], BT.new(), &BT.insert(&2, &1, &1))
       t2 = Enum.reduce([5, 2, 1, 3, 100], BT.new(), &BT.insert(&2, &1, &1))
 
-      assert true == BT.Isomorphism.isomorphic?(t1, t2)
+      assert true == BT.isomorphic?(t1, t2)
     end
 
     @tag task: :tree_isomorphism
@@ -120,7 +120,7 @@ defmodule BinaryTreeTest do
       t1 = BT.new() |> BT.insert(:a, 3)
       t2 = BT.new()
 
-      assert false == BT.Isomorphism.isomorphic?(t1, t2)
+      assert false == BT.isomorphic?(t1, t2)
     end
 
     @tag task: :tree_isomorphism
@@ -128,7 +128,7 @@ defmodule BinaryTreeTest do
       t1 = BT.new() |> BT.insert(1, :a) |> BT.insert(2, :b) |> BT.insert(3, :c)
       t2 = BT.new() |> BT.insert(1, :a) |> BT.insert(0, :b) |> BT.insert(3, :c)
 
-      assert BT.Isomorphism.isomorphic?(t1, t2) == false
+      assert BT.isomorphic?(t1, t2) == false
     end
 
     @tag task: :tree_isomorphism
