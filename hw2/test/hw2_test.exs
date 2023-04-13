@@ -47,20 +47,29 @@ defmodule HW2Test do
   defp sorted?([f, s | rest]), do: f <= s and sorted?([s | rest])
   defp sorted?(_other), do: true
 
+  @fib_function (cond do
+                   function_exported?(HW2, :fibbonacchi, 1) -> &HW2.fibbonacchi/1
+                   function_exported?(HW2, :fibbonachi, 1) -> &HW2.fibbonachi/1
+                   function_exported?(HW2, :fibbonacci, 1) -> &HW2.fibbonacci/1
+                   function_exported?(HW2, :fibonacchi, 1) -> &HW2.fibonacchi/1
+                   function_exported?(HW2, :fibonachi, 1) -> &HW2.fibonachi/1
+                   function_exported?(HW2, :fibonacci, 1) -> &HW2.fibonacci/1
+                 end)
+
   @tag task: :fib
   @tag timeout: 1000
   test "fibbonachi" do
     first_10 = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 
     for i <- 0..10 do
-      assert HW2.fibbonachi(i) == Enum.at(first_10, i)
+      assert @fib_function.(i) == Enum.at(first_10, i)
     end
 
     fib_581_rem_1_million = 123_781
-    assert HW2.fibbonachi(581) |> rem(1_000_000) == fib_581_rem_1_million
+    assert @fib_function.(581) |> rem(1_000_000) == fib_581_rem_1_million
 
     fib_1000_rem_1_million = 228_875
-    assert HW2.fibbonachi(1000) |> rem(1_000_000) == fib_1000_rem_1_million
+    assert @fib_function.(1000) |> rem(1_000_000) == fib_1000_rem_1_million
   end
 
   @tag task: :lucas
