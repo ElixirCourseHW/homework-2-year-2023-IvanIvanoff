@@ -47,6 +47,8 @@ defmodule HW2Test do
   defp sorted?([f, s | rest]), do: f <= s and sorted?([s | rest])
   defp sorted?(_other), do: true
 
+  # There was a typo in the function name and the test of some people were failing
+  # because they fixed the typo
   @fib_function (cond do
                    function_exported?(HW2, :fibbonacchi, 1) -> &HW2.fibbonacchi/1
                    function_exported?(HW2, :fibbonachi, 1) -> &HW2.fibbonachi/1
